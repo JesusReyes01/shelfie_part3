@@ -1,31 +1,45 @@
 import React, {Component} from 'react';
+import axios from 'axios';
 
 export default class Form extends Component{
     constructor(props){
         super(props);
         this.state = {
-            imageInput: '',
-            productNameInput: '',
-            priceInput: null
+            name: '',
+            price: null,
+            img: ''
         }
+        this.addToInventory = this.addToInventory.bind(this)
     }
     handleImageInput = (val) => {
-        this.setState({imageInput: val})
+        this.setState({img: val})
     }
     handleProductNameInput = (val) => {
-        this.setState({productNameInput: val})
+        this.setState({name: val})
     }
     handlePriceInput = (val) => {
-        this.setState({priceInput: val})
+        this.setState({price: val})
     }
+    // newProduct = {name: this.state.name, price: this.state.price, img: this.state.img}
+    addToInventory = () => {
+        axios.post('/api/product')
+        .then(res => {
+          this.setState({inventory: res.data})
+        })
+        .catch(err => console.log(err));
+
+        this.clearForm();
+        this.props.getProductFn();
+      }
     // addToInventory = () => {
     //     this.props.SOMETHINGFN(this.state.imageInput, this.state.productNameInput, this.state.priceIput);
     //     this.clearForm();
+    //     this.props.getProductFn();
     // }
     clearForm = () => {
-        this.setState({imageInput: ''})
-        this.setState({productNameInput: ''})
-        this.setState({priceInput: null})
+        this.setState({img: ''})
+        this.setState({name: ''})
+        this.setState({price: null})
 
     }
     render(){
