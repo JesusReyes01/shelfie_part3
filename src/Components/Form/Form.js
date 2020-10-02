@@ -6,7 +6,7 @@ export default class Form extends Component{
         super(props);
         this.state = {
             name: '',
-            price: null,
+            price: 0,
             img: ''
         }
         this.addToInventory = this.addToInventory.bind(this)
@@ -18,33 +18,37 @@ export default class Form extends Component{
         this.setState({name: val})
     }
     handlePriceInput = (val) => {
+        val = +val;
         this.setState({price: val})
     }
     // newProduct = {name: this.state.name, price: this.state.price, img: this.state.img}
-    addToInventory = () => {
+    addToInventory(){
         let {name,price,img} = this.state;
         let product = {name, price, img}
         
         axios.post('/api/product', product)
         .then(res => {
-            this.clearForm();
             this.props.getProductFn();
+            this.clearForm();
         })
         .catch(err => console.log(err));
       }
 
     clearForm = () => {
-        this.setState({img: ''})
         this.setState({name: ''})
-        this.setState({price: null})
+        this.setState({price: 0})
+        this.setState({img: ''})
 
     }
     render(){
         return(
             <div>
                 <div>
+                    <p>ImageURL</p>
                     <input onChange={e => this.handleImageInput(e.target.value)}></input>
+                    <p>Product Name:</p>
                     <input onChange={e => this.handleProductNameInput(e.target.value)}></input>
+                    <p>Price:</p>
                     <input onChange={e => this.handlePriceInput(e.target.value)}></input>
                 </div>
                 <div>
