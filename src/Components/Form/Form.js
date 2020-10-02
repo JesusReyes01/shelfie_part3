@@ -22,20 +22,17 @@ export default class Form extends Component{
     }
     // newProduct = {name: this.state.name, price: this.state.price, img: this.state.img}
     addToInventory = () => {
-        axios.post('/api/product')
+        let {name,price,img} = this.state;
+        let product = {name, price, img}
+        
+        axios.post('/api/product', product)
         .then(res => {
-          this.setState({inventory: res.data})
+            this.clearForm();
+            this.props.getProductFn();
         })
         .catch(err => console.log(err));
-
-        this.clearForm();
-        this.props.getProductFn();
       }
-    // addToInventory = () => {
-    //     this.props.SOMETHINGFN(this.state.imageInput, this.state.productNameInput, this.state.priceIput);
-    //     this.clearForm();
-    //     this.props.getProductFn();
-    // }
+
     clearForm = () => {
         this.setState({img: ''})
         this.setState({name: ''})

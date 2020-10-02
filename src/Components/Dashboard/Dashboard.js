@@ -7,7 +7,7 @@ const Dashboard = props => {
         <Product
             key={i}
             product={el}
-            getProductFn={props.getProductFn}/>
+            getInventoryFn={props.getInventoryFn}/>
     ))
         return(
             <div>
