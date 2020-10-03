@@ -11,7 +11,7 @@ class App extends Component {
   constructor(props){
     super(props)
     this.state = {
-      inventory: [{name: 'dummyname', price: 9, img: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=600&q=60L"}]
+      inventory: []
       // {name: 'dummyname', price: 9, img: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=600&q=60L"}
     }
     this.getInventory = this.getInventory.bind(this)
@@ -32,10 +32,10 @@ class App extends Component {
     return (
       <div className="App">
         <Header />
-        <Dashboard 
-          inventory ={this.state.inventory} />
         <Form 
           getInventoryFn={this.getInventory}/>
+        <Dashboard 
+          inventory ={this.state.inventory}/>
       </div>
     );
 

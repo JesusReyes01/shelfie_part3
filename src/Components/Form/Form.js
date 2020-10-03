@@ -1,37 +1,35 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import axios from 'axios';
 
-export default class Form extends Component{
-    constructor(props){
-        super(props);
-        this.state = {
-            name: '',
-            price: 0,
-            img: ''
-        }
-        this.addToInventory = this.addToInventory.bind(this)
+export default class Form extends Component {
+    constructor(props) {
+      super(props);
+      this.state = {
+        name: '',
+        price: 0,
+        img: ''
+      }
     }
-    handleImageInput = (val) => {
+    imageInput = (val) => {
         this.setState({img: val})
     }
-    handleProductNameInput = (val) => {
+    nameInput = (val) => {
         this.setState({name: val})
     }
-    handlePriceInput = (val) => {
+    priceInput = (val) => {
         val = +val;
         this.setState({price: val})
     }
-    // newProduct = {name: this.state.name, price: this.state.price, img: this.state.img}
     addToInventory(){
         let {name,price,img} = this.state;
-        let product = {name, price, img}
+        let product = {name, price, img};
         
         axios.post('/api/product', product)
         .then(res => {
-            this.props.getProductFn();
-            this.clearForm();
+          this.props.getInventory();
+          this.clearInputs();
         })
-        .catch(err => console.log(err));
+        .catch(err => console.log('axios error', err))
       }
 
     clearForm = () => {
@@ -45,11 +43,11 @@ export default class Form extends Component{
             <div>
                 <div>
                     <p>ImageURL</p>
-                    <input onChange={e => this.handleImageInput(e.target.value)}></input>
+                    <input value={this.state.img} onChange={e => this.imageInput(e.target.value)}/>
                     <p>Product Name:</p>
-                    <input onChange={e => this.handleProductNameInput(e.target.value)}></input>
+                    <input value={this.state.name} onChange={e => this.nameInput(e.target.value)}/>
                     <p>Price:</p>
-                    <input onChange={e => this.handlePriceInput(e.target.value)}></input>
+                    <input value={this.state.price} onChange={e => this.priceInput(e.target.value)}/>
                 </div>
                 <div>
                     <button onClick={() => this.clearForm()}>Cancel</button>

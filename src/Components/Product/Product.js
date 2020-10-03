@@ -6,7 +6,7 @@ class Product extends Component{
         return(
             <div className='product-flex'>
                 <img src={this.props.product.img} alt={this.props.product.name}/>
-                <span>${this.props.product.name}</span>
+                <span>{this.props.product.name}</span>
                 <span>${this.props.product.price}</span>
             </div>
         )
