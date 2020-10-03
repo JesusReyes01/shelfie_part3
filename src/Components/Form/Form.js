@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import './Form.css'
 
 export default class Form extends Component {
     constructor(props) {
@@ -40,7 +41,7 @@ export default class Form extends Component {
     }
     render(){
         return(
-            <div>
+            <div className='form'>
                 <div>
                     <p>ImageURL</p>
                     <input value={this.state.img} onChange={e => this.imageInput(e.target.value)}/>
@@ -49,7 +50,7 @@ export default class Form extends Component {
                     <p>Price:</p>
                     <input value={this.state.price} onChange={e => this.priceInput(e.target.value)}/>
                 </div>
-                <div>
+                <div className='button-flex'>
                     <button onClick={() => this.clearForm()}>Cancel</button>
                     <button onClick={() => this.addToInventory()}>Add to Inventory</button>
                 </div>

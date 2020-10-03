@@ -1,5 +1,6 @@
 import React from 'react';
 import Product from '../Product/Product'
+import './Dashboard.css'
 
 
 const Dashboard = props => {
@@ -10,7 +11,7 @@ const Dashboard = props => {
             getInventoryFn={props.getInventoryFn}/>
     ))
         return(
-            <div>
+            <div className='dashboard-flex'>
                 <h1>Dashboard</h1>
                 <div>
                     {mappedInventory}   

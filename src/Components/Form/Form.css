@@ -1,0 +1,39 @@
+.form {
+    position:fixed;
+    top: 110px;
+    right: 20px;
+    background: #3ad886;
+    width: 350px;   
+    height: 520px;
+    border-radius: 10px;
+    margin: 40px ;
+    display:flex;
+    flex-direction: column;
+    justify-content: flex-end;
+
+    padding: 25px 25px 25px 25px;
+    
+}
+.form p{
+    text-align: left;
+    /* background: blue; */
+
+}
+.form input{
+    width: 98%;
+}
+.button-flex{
+    display:flex;
+    justify-content: space-between;
+    margin: 15px;
+}
+.button-flex button{
+    padding: 10px;
+    margin: 5px 10px;
+    background-color: #ed6b5a;
+    border-radius: 7px;
+    border: none;
+    font-family: Open Sans, sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+}

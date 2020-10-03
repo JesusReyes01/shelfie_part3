@@ -1,0 +1,10 @@
+.dashboard-flex{
+    width: 600px;
+    position: absolute;
+    background: lightblue;
+    left: 30px;
+    margin: 40px;
+    margin-top: 150px;
+    border-radius: 10px;
+
+}
