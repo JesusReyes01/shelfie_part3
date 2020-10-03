@@ -26,8 +26,8 @@ export default class Form extends Component {
         
         axios.post('/api/product', product)
         .then(res => {
-          this.props.getInventory();
-          this.clearInputs();
+          this.props.getInventoryFn();
+          this.clearForm();
         })
         .catch(err => console.log('axios error', err))
       }
