@@ -6,11 +6,20 @@ export default class Form extends Component {
     constructor(props) {
       super(props);
       this.state = {
+        id: null,
         name: '',
         price: 0,
-        img: ''
+        img: '',
+        edit: false
       }
     }
+    componentDidUpdate(oldProps) {
+        let { id, name, price, img } = this.props.product;
+        if (oldProps.product.id !== this.props.product.id) {
+          this.setState({ id, name, price, img, edit: true });
+        }
+      }
+
     imageInput = (val) => {
         this.setState({img: val})
     }
@@ -34,6 +43,7 @@ export default class Form extends Component {
       }
 
     clearForm = () => {
+        this.setState({id: null})
         this.setState({name: ''})
         this.setState({price: 0})
         this.setState({img: ''})
@@ -52,7 +62,12 @@ export default class Form extends Component {
                 </div>
                 <div className='button-flex'>
                     <button onClick={() => this.clearForm()}>Cancel</button>
-                    <button onClick={() => this.addToInventory()}>Add to Inventory</button>
+                    {this.state.id
+                        ? <button onClick={() => this.handleEdit()}>Submit Changes</button>
+                        : <button onClick={() => this.addToInventory()}>Add to Inventory</button>
+                    }
+                    
+                    
                 </div>
             </div>
 

@@ -11,10 +11,11 @@ class App extends Component {
   constructor(props){
     super(props)
     this.state = {
-      inventory: []
-      // {name: 'dummyname', price: 9, img: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=600&q=60L"}
+      inventory: [],
+      currentProduct: ''
     }
     this.getInventory = this.getInventory.bind(this)
+    this.editSelected = this.editSelected.bind(this)
   }
   componentDidMount(){
     this.getInventory();
@@ -26,17 +27,28 @@ class App extends Component {
     this.setState({inventory: res.data})
   })
   .catch(err => console.log(err));
-}
+  }
+
+  editSelected(product){
+    this.setState({currentProduct: product})
+  }
+  
+
 
   render(){
+
     return (
       <div className="App">
         <Header />
         <div className='body-flex'>
           <Form 
-            getInventoryFn={this.getInventory}/>
+            product={this.state.currentProduct}
+            getInventoryFn={this.getInventory}
+            editSelectedFn={this.editSelected}/>
           <Dashboard 
-            inventory ={this.state.inventory}/>
+            inventory ={this.state.inventory}
+            getInventoryFn={this.getInventory}
+            editSelectedFn={this.editSelected}/>
         </div>
         
       </div>

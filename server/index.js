@@ -18,5 +18,6 @@ massive({
 //endpoint
 app.get('/api/inventory', ctrl.getInventory);
 app.post('/api/product', ctrl.addProduct);
+app.delete('/api/deleteProduct/:id', ctrl.deleteProduct);
 
 app.listen(SERVER_PORT, () => console.log(`Server is running on ${SERVER_PORT}`));
