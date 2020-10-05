@@ -1,10 +1,30 @@
 .dashboard-flex{
-    width: 600px;
-    position: absolute;
-    background: lightblue;
+    width: 400px;
+    background: lightgrey;
     left: 30px;
-    margin: 40px;
+    margin: 10px;
     margin-top: 150px;
     border-radius: 10px;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
 
+}
+
+@media (min-width: 875px) {
+  .dashboard-flex {
+    width: 505px;
+  }
+}
+@media (min-width: 1050px) {
+  .dashboard-flex {
+    width: 605px;
+   
+  }
+}
+@media (min-width: 1150px) {
+  .dashboard-flex {
+    width: 705px;
+  }
 }

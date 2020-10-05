@@ -1,12 +1,10 @@
 .form {
-    position:fixed;
-    top: 110px;
-    right: 20px;
+    margin-top:150px;
     background: #3ad886;
     width: 350px;   
     height: 520px;
     border-radius: 10px;
-    margin: 40px ;
+   
     display:flex;
     flex-direction: column;
     justify-content: flex-end;
@@ -34,6 +32,10 @@
     border-radius: 7px;
     border: none;
     font-family: Open Sans, sans-serif;
-    font-weight: 700;
+    font-weight: 500;
     font-size: 16px;
+}
+.form-image{
+    width:250px;
+    margin-bottom: 30px;
 }

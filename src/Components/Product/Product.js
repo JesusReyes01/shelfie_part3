@@ -1,44 +1,53 @@
 // import axios from 'axios';
-import React, {Component} from 'react';
+import React/*, {Component}*/ from 'react';
+import { withRouter } from 'react-router-dom';
+import './Product.css'
 
-class Product extends Component{
-    // constructor(props){
-    //     super(props);
-        
-    // }
+function Product(props) {
+    let { id, name, price, img } = props.product;
 
-    // deleteProduct = (id) => {
-    //     axios
-    //     .delete(`/api/deleteProduct/${id}`)
-    //     .then(res => {
-    //         this.props.getInventoryFn();
-    //     })
-    //     .catch(err => console.log('axios error', err))
-    // }
-
-    render(){
-    
-        return(
-            <div className='product-flex'>
-                <div>
-                    <img src={this.props.product.img} alt={this.props.product.name}/>
-                </div>
-                <div>
-                    <div>
-                        <span>{this.props.product.name}</span>
-                        <span>${this.props.product.price}</span>
-                    </div>
-                    <div>
-                        <button onClick={()=> this.props.editSelectedFn(this.props.product)}>Edit</button>
-                        <button onClick={()=> this.props.deleteProductFn(this.props.product.id)}>Delete</button>
-                    </div>
-                    
-                </div>
+    return (
+      <div className='product-flex'>
+        <img src={img} alt={name}/>
+        <div className='large-media-flex'>
+          <div className='description-flex'>
+            <p >{name}</p>
+            <p >${price}</p>
+          </div>
+          <div className='product-button-flex'>
+            <button onClick={_ => props.deleteProductFn(id)}>Delete</button>
+            <button onClick={_ => props.history.push(`/edit/${id}`)}>Edit</button>
+          </div>
+        </div>
+      </div>
+    )
+  }
+  
+  export default withRouter(Product);
 
 
-            </div>
-        )
-        }
+// class Product extends Component{
 
-};
-export default Product;
+//     render(){
+
+//         return(
+//             <div className='product-flex'>
+//                 <div>
+//                     <img src={this.props.product.img} alt={this.props.product.name}/>
+//                 </div>
+//                 <div >
+//                     <div className='description-flex'>
+//                         <p>{this.props.product.name}</p>
+//                         <p>${this.props.product.price}</p>
+//                     </div>     
+//                     <div className='product-button-flex'>
+//                         <button onClick={()=> this.props.deleteProductFn(this.props.product.id)}>Delete</button>
+//                         <button onClick={()=> this.props.history.push(`/edit/${this.props.product.id}`)}>Edit</button>
+//                         {/* console.log(this.props) */}
+//                     </div>
+//                 </div>
+//             </div>
+//         )
+//         }
+// };
+// export default Product;
